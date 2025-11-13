@@ -1,0 +1,40 @@
+{
+	"schemaVersion": 1,
+	"id": "waynes-world",
+	"version": "${version}",
+	"name": "Wayne's World",
+	"description": "This is about making minecraft more fun for both casual and experience players",
+	"authors": [
+		"Me! WayneGameDev!"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "CC0-1.0",
+	"icon": "assets/waynes-world/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"waynegamedev.waynesworld.WaynesWorld"
+		],
+		"fabric-datagen": [
+			"waynegamedev.waynesworld.WaynesWorldDataGenerator"
+		],
+        "client": [
+            "waynegamedev.waynesworld.WaynesWorldClient"
+        ]
+	},
+	"mixins": [
+		"waynes-world.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.17.3",
+		"minecraft": "~1.21.1",
+		"java": ">=21",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}

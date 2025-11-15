@@ -4,6 +4,7 @@ import net.fabricmc.api.ModInitializer;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import waynegamedev.waynesworld.entiry.ModEntites;
 
 public class WaynesWorld implements ModInitializer {
 	public static final String MOD_ID = "waynes-world";
@@ -11,6 +12,6 @@ public class WaynesWorld implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
-
+        ModEntites.registerModEnities();
 	}
 }

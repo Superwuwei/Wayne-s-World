@@ -10,7 +10,7 @@ import waynegamedev.waynesworld.WaynesWorld;
 import waynegamedev.waynesworld.entiry.custom.AmongUsEntity;
 
 public class AmongUsModel <T extends AmongUsEntity> extends SinglePartEntityModel<T> {
-    public static final EntityModelLayer AMONGUS = new EntityModelLayer(Identifier.of(WaynesWorld.MOD_ID, "AmongUs"), "main");
+    public static final EntityModelLayer AMONGUS = new EntityModelLayer(Identifier.of(WaynesWorld.MOD_ID, "amongus"), "main");
 
     private final ModelPart AmongUs;
     private final ModelPart Body;

@@ -15,7 +15,7 @@ public class AmongUsRender extends MobEntityRenderer<AmongUsEntity, AmongUsModel
 
     @Override
     public Identifier getTexture(AmongUsEntity entity) {
-        return Identifier.of(WaynesWorld.MOD_ID, "textures/entity/AmongUs/AmongUs.png");
+        return Identifier.of(WaynesWorld.MOD_ID, "textures/entity/amongus/AmongUs.png");
     }
 
     @Override

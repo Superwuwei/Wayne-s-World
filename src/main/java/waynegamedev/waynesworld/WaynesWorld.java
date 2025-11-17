@@ -7,11 +7,11 @@ import org.slf4j.LoggerFactory;
 import waynegamedev.waynesworld.entiry.ModEntites;
 
 public class WaynesWorld implements ModInitializer {
-	public static final String MOD_ID = "waynes-world";
+	public static final String MOD_ID = "waynesworld";
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
 	@Override
 	public void onInitialize() {
-        ModEntites.registerModEnities();
+        ModEntites.registerModEntites();
 	}
 }

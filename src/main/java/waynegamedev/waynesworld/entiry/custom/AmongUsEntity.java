@@ -1,5 +1,6 @@
 package waynegamedev.waynesworld.entiry.custom;
 
+import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 import net.minecraft.entity.AnimationState;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ai.goal.*;
@@ -24,18 +25,18 @@ public class AmongUsEntity extends AnimalEntity {
         super(entityType, world);
     }
 
-    @Override
-    protected void initGoals() {
-        this.goalSelector.add(0, new SwimGoal(this));
-
-        this.goalSelector.add(1, new AnimalMateGoal(this, 1.15D));
-        this.goalSelector.add(2, new TemptGoal(this, 1.25D, Ingredient.ofItems(Items.BREAD), false));
-
-        this.goalSelector.add(3, new FollowParentGoal(this, 1.1D));
-
-        this.goalSelector.add(4, new WanderAroundFarGoal(this, 1.00));
-        this.goalSelector.add(6, new LookAroundGoal(this));
-    }
+//    @Override
+//    protected void initGoals() {
+//        this.goalSelector.add(0, new SwimGoal(this));
+//
+//        this.goalSelector.add(1, new AnimalMateGoal(this, 1.15D));
+//        this.goalSelector.add(2, new TemptGoal(this, 1.25D, Ingredient.ofItems(Items.BREAD), false));
+//
+//        this.goalSelector.add(3, new FollowParentGoal(this, 1.1D));
+//
+//        this.goalSelector.add(4, new WanderAroundFarGoal(this, 1.00));
+//        this.goalSelector.add(6, new LookAroundGoal(this));
+//    }
 
     public static DefaultAttributeContainer.Builder createAttributes() {
         return MobEntity.createMobAttributes()
@@ -45,6 +46,10 @@ public class AmongUsEntity extends AnimalEntity {
                 .add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 3.0)
                 .add(EntityAttributes.GENERIC_ATTACK_SPEED, 4);
     }
+
+//    public static void registerAttributes() {
+//        FabricDefaultAttributeRegistry.register(ModEntites.AMONGUS, AmongUsEntity.set);
+//    }
 
     private void setupAnimationStates() {
         if (this.idleAnimationTimeout <= 0) {

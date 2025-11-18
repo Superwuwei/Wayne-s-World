@@ -14,16 +14,10 @@ public class AmongUsModel <T extends AmongUsEntity> extends SinglePartEntityMode
 
     private final ModelPart AmongUs;
     private final ModelPart Body;
-    private final ModelPart BackPack;
-    private final ModelPart LeftLeg;
-    private final ModelPart RightLeg;
 
     public AmongUsModel(ModelPart root) {
         this.AmongUs = root.getChild("AmongUs");
         this.Body = this.AmongUs.getChild("Body");
-        this.BackPack = this.Body.getChild("BackPack");
-        this.LeftLeg = this.AmongUs.getChild("LeftLeg");
-        this.RightLeg = this.AmongUs.getChild("RightLeg");
     }
 
     public static TexturedModelData getTexturedModelData() {

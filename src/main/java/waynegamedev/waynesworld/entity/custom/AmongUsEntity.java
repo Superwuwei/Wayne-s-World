@@ -1,6 +1,5 @@
-package waynegamedev.waynesworld.entiry.custom;
+package waynegamedev.waynesworld.entity.custom;
 
-import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 import net.minecraft.entity.AnimationState;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ai.goal.*;
@@ -9,13 +8,14 @@ import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.passive.PassiveEntity;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
-import waynegamedev.waynesworld.entiry.ModEntites;
+import waynegamedev.waynesworld.entity.ModEntites;
 
 public class AmongUsEntity extends AnimalEntity {
     public final AnimationState idleAnimationState = new AnimationState();
@@ -25,31 +25,28 @@ public class AmongUsEntity extends AnimalEntity {
         super(entityType, world);
     }
 
-//    @Override
-//    protected void initGoals() {
-//        this.goalSelector.add(0, new SwimGoal(this));
-//
-//        this.goalSelector.add(1, new AnimalMateGoal(this, 1.15D));
-//        this.goalSelector.add(2, new TemptGoal(this, 1.25D, Ingredient.ofItems(Items.BREAD), false));
-//
-//        this.goalSelector.add(3, new FollowParentGoal(this, 1.1D));
-//
-//        this.goalSelector.add(4, new WanderAroundFarGoal(this, 1.00));
-//        this.goalSelector.add(6, new LookAroundGoal(this));
-//    }
+    @Override
+    protected void initGoals() {
+        this.goalSelector.add(0, new SwimGoal(this));
+
+        this.goalSelector.add(1, new AnimalMateGoal(this, 1.15D));
+        this.goalSelector.add(2, new TemptGoal(this, 1.25D, Ingredient.ofItems(Items.BREAD), false));
+
+        this.goalSelector.add(3, new FollowParentGoal(this, 1.1D));
+
+        this.goalSelector.add(4, new WanderAroundFarGoal(this, 1.0D));
+        this.goalSelector.add(5, new LookAtEntityGoal(this, PlayerEntity.class, 4.0F));
+        this.goalSelector.add(6, new LookAroundGoal(this));
+    }
 
     public static DefaultAttributeContainer.Builder createAttributes() {
         return MobEntity.createMobAttributes()
                 .add(EntityAttributes.GENERIC_MAX_HEALTH, 18)
-                .add(EntityAttributes.GENERIC_FOLLOW_RANGE, 35.0)
-                .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.23F)
-                .add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 3.0)
-                .add(EntityAttributes.GENERIC_ATTACK_SPEED, 4);
+                .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.35)
+                .add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 1)
+                .add(EntityAttributes.GENERIC_ATTACK_SPEED, 1)
+                .add(EntityAttributes.GENERIC_FOLLOW_RANGE, 20);
     }
-
-//    public static void registerAttributes() {
-//        FabricDefaultAttributeRegistry.register(ModEntites.AMONGUS, AmongUsEntity.set);
-//    }
 
     private void setupAnimationStates() {
         if (this.idleAnimationTimeout <= 0) {
@@ -60,11 +57,10 @@ public class AmongUsEntity extends AnimalEntity {
         }
     }
 
-    @Override
     public void tick() {
         super.tick();
 
-        if (this.getWorld().isClient()) {
+        if (this.getWorld().isClient) {
             this.setupAnimationStates();
         }
     }
@@ -74,9 +70,8 @@ public class AmongUsEntity extends AnimalEntity {
         return stack.isOf(Items.BREAD);
     }
 
-    @Nullable
     @Override
-    public PassiveEntity createChild(ServerWorld world, PassiveEntity entity) {
+    public @Nullable PassiveEntity createChild(ServerWorld world, PassiveEntity entity) {
         return ModEntites.AMONGUS.create(world);
     }
 }

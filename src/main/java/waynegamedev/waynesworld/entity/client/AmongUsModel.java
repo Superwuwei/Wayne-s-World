@@ -1,4 +1,4 @@
-package waynegamedev.waynesworld.entiry.client;
+package waynegamedev.waynesworld.entity.client;
 
 import net.minecraft.client.model.*;
 import net.minecraft.client.render.VertexConsumer;
@@ -7,17 +7,23 @@ import net.minecraft.client.render.entity.model.SinglePartEntityModel;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;
 import waynegamedev.waynesworld.WaynesWorld;
-import waynegamedev.waynesworld.entiry.custom.AmongUsEntity;
+import waynegamedev.waynesworld.entity.custom.AmongUsEntity;
 
-public class AmongUsModel <T extends AmongUsEntity> extends SinglePartEntityModel<T> {
+public class AmongUsModel<T extends AmongUsEntity> extends SinglePartEntityModel<T> {
     public static final EntityModelLayer AMONGUS = new EntityModelLayer(Identifier.of(WaynesWorld.MOD_ID, "amongus"), "main");
 
     private final ModelPart AmongUs;
     private final ModelPart Body;
+    private final ModelPart BackPack;
+    private final ModelPart LeftLeg;
+    private final ModelPart RightLeg;
 
     public AmongUsModel(ModelPart root) {
         this.AmongUs = root.getChild("AmongUs");
         this.Body = this.AmongUs.getChild("Body");
+        this.BackPack = this.Body.getChild("BackPack");
+        this.LeftLeg = this.AmongUs.getChild("LeftLeg");
+        this.RightLeg = this.AmongUs.getChild("RightLeg");
     }
 
     public static TexturedModelData getTexturedModelData() {

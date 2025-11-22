@@ -1,4 +1,4 @@
-package waynegamedev.waynesworld.entiry.client;
+package waynegamedev.waynesworld.entity.client;
 
 import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.entity.EntityRendererFactory;
@@ -6,14 +6,13 @@ import net.minecraft.client.render.entity.MobEntityRenderer;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;
 import waynegamedev.waynesworld.WaynesWorld;
-import waynegamedev.waynesworld.entiry.custom.AmongUsEntity;
+import waynegamedev.waynesworld.entity.custom.AmongUsEntity;
 
-public class AmongUsRender extends MobEntityRenderer<AmongUsEntity, AmongUsModel<AmongUsEntity>> {
-    public AmongUsRender(EntityRendererFactory.Context context) {
+public class AmongUsRenderer extends MobEntityRenderer<AmongUsEntity, AmongUsModel<AmongUsEntity>> {
+    public AmongUsRenderer(EntityRendererFactory.Context context) {
         super(context, new AmongUsModel<>(context.getPart(AmongUsModel.AMONGUS)), 0.75f);
     }
 
-    @Override
     public Identifier getTexture(AmongUsEntity entity) {
         return Identifier.of(WaynesWorld.MOD_ID, "textures/entity/amongus/AmongUs.png");
     }
